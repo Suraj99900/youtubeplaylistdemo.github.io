@@ -21,7 +21,7 @@ body {
     background: var(--bg-black-900);
     min-height: 100vh;
     display: block;
-    padding: 0 30px;
+    padding: 0 20px;
     opacity: 1;
 }
 
@@ -55,8 +55,8 @@ body {
 }
 
 .main_box .right_box {
-    max-width: 70%;
-    flex: 0 0 70%;
+    max-width: 100%;
+    flex: 0 0 100%;
     background: var(--bg-black-900);
 }
 
@@ -73,17 +73,14 @@ body {
 
 
 .main_box .left_box {
-    max-width: 30%;
-    flex: 0 0 30%;
-    /* height: 100vh; */
+    max-width: 100%;
+    flex: 0 0 100%;
     /* overflow-y: scroll; */
     background: var(--bg-black-100);
-    min-height: 100vh;
     /* border: 1px solid rgba(0, 0, 0, 0.5); */
     padding: 10px 10px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-
 }
 
 .main_box .right_box .video {
@@ -105,18 +102,43 @@ body {
 }
 
 .container .content .main_box .left_box h4 {
-    text-align: justify;
-    text-transform: uppercase;
+    /* text-align: justify; */
+    /* text-transform: uppercase; */
     font-size: 16px;
     color: var(--text-black-700);
     margin-bottom: 30px;
+    padding: 0 10px;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .main_box .left_box .img_data {
-    /* padding: 15px; */
-    width: 100%;
+    padding: 15px;
+    max-width: 33.33%;
+    flex: 0 0 33.33%;
     height: 250px;
+}
+
+span {
+    display: block;
+}
+
+.main_box .right_box .box_btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.main_box .btn {
+    /* width: 150px; */
+    /* padding: 5px; */
+    margin: 15px;
+    border: none;
+    background: rgba(208, 65, 65, 0.82);
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 50px;
+    text-transform: uppercase;
 }
 
 
@@ -146,7 +168,7 @@ body {
 
     .main_box .left_box {
         height: 100%;
-        margin-top: 100vh;
+
     }
 
     .main_box .right_box,
@@ -156,11 +178,19 @@ body {
         /* display: block; */
     }
 
+
+
     .main_box .right_box #description {
         font-size: 12px;
         /* text-align: justify; */
-        width: 50%;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
+    }
+
+
+    .main_box .left_box .img_data {
+        max-width: 100%;
+        flex: 0 0 100%;
     }
 }
