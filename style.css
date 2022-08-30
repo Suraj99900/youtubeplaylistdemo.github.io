@@ -95,10 +95,18 @@ body {
 
 }
 
-.main_box .right_box #description {
-    font-size: 14px;
-    text-align: justify; 
+.main_box .right_box .description_box {
     width: 100%;
+
+    /* margin: 10px; */
+    overflow: hidden;
+}
+
+.main_box .right_box .description_box #description {
+    font-size: 14px;
+    /* text-align: justify; */
+    width: 100%;
+    /* margin: 10px; */
 }
 
 .container .content .main_box .left_box h4 {
