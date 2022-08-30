@@ -96,8 +96,8 @@ body {
 }
 
 .main_box .right_box #description {
-    font-size: 18px;
-    /* text-align: justify; */
+    font-size: 14px;
+    text-align: justify; 
     width: 100%;
 }
 
