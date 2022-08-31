@@ -1,6 +1,11 @@
 
 var nextToken = "";
 var prevToken = "";
+var ST_token = " ";
+// console.log(nextToken);
+// console.log(prevToken);
+
+var token = ['EAEaBlBUOkNBdw', 'EAAaBlBUOkNBdw', 'EAAaBlBUOkNCZw', 'EAAaBlBUOkNDUQ', 'EAAaBlBUOkNEQQ', 'EAAaBlBUOkNEdw', 'EAAaBlBUOkNFZw'];
 
 var store_data_image = new Array();
 var store_data_title = new Array();
@@ -11,6 +16,17 @@ var store_data_description = new Array();
 var channelTitle;
 
 let channelTitle_id = document.getElementById('channel_name');
+
+
+// // general items
+// let i1 = document.getElementById('i0'),
+//     i2 = document.getElementById('i1'),
+//     i3 = document.getElementById('i2'),
+//     i4 = document.getElementById('i3'),
+//     i5 = document.getElementById('i4'),
+//     i6 = document.getElementById('i5');
+
+let add_btn = document.querySelectorAll('.add');
 
 // right_box content
 let main_if = document.getElementById('main_if');
@@ -42,7 +58,7 @@ var img;
 function Json_data(params) {
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&key=AIzaSyC3GQ8vEZLJr2UW8FloXX4F5y3QALherMo&' + nextToken, true);
+    xhr.open('GET', 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=12&playlistId=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&key=AIzaSyC3GQ8vEZLJr2UW8FloXX4F5y3QALherMo&' + ST_token, true);
 
 
 
@@ -54,9 +70,13 @@ function Json_data(params) {
         you_data = JSON.parse(xhr.responseText)
 
         // console.log(you_data);
-        nextToken = "pageToken=" + you_data.nextPageToken;
-        // prevToken = "pageToken=" + you_data.prevPageToken;
-        console.log(you_data.nextPageToken);
+        if (you_data.nextPageToken != undefined) {
+            nextToken = "pageToken=" + you_data.nextPageToken;
+        } if (you_data.prevPageToken != undefined) {
+            prevToken = "pageToken=" + you_data.prevPageToken;
+        }
+        console.log("next=" + nextToken);
+        console.log("prev=" + prevToken);
         items_len = you_data.items.length;
         for (item in you_data.items) {
 
@@ -157,7 +177,7 @@ function Json_data(params) {
 // json next data
 function next_json() {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&key=AIzaSyC3GQ8vEZLJr2UW8FloXX4F5y3QALherMo&' + nextToken, true);
+    xhr.open('GET', 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=12&playlistId=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&key=AIzaSyC3GQ8vEZLJr2UW8FloXX4F5y3QALherMo&' + nextToken, true);
 
 
 
@@ -173,8 +193,8 @@ function next_json() {
         }
 
 
-        console.log(nextToken);
-        console.log(prevToken);
+        console.log("next=" + nextToken);
+        console.log("prev" + prevToken);
         items_len = you_data.items.length;
         for (item in you_data.items) {
 
@@ -271,7 +291,7 @@ function next_json() {
 // Json prv data
 function prv_json() {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=10&playlistId=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&key=AIzaSyC3GQ8vEZLJr2UW8FloXX4F5y3QALherMo&' + prevToken, true);
+    xhr.open('GET', 'https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=12&playlistId=PLu0W_9lII9aikXkRE0WxDt1vozo3hnmtR&key=AIzaSyC3GQ8vEZLJr2UW8FloXX4F5y3QALherMo&' + prevToken, true);
 
 
 
@@ -285,8 +305,8 @@ function prv_json() {
         } if (you_data.prevPageToken) {
             prevToken = "pageToken=" + you_data.prevPageToken;
         }
-        console.log(nextToken);
-        console.log(prevToken);
+        console.log("next=" + nextToken);
+        console.log("prev" + prevToken);
         items_len = you_data.items.length;
         for (item in you_data.items) {
 
@@ -391,9 +411,9 @@ function data() {
     let img_data = document.querySelectorAll(".img_data");
     let h4_rm = document.querySelectorAll(".title_h4");
     let i_value;
-    console.log("working");
+    // console.log("working");
     img_data.forEach(item => {
-        console.log("working");
+        // console.log("working");
         item.addEventListener('click', (e) => {
 
             console.log(item.classList);
@@ -457,6 +477,17 @@ if (nextToken != undefined) {
         remove_item();
         next_json();
 
+        for (let i = 0; i < add_btn.length; i++) {
+            if (add_btn[i].classList[3] == "active") {
+                if (add_btn[i].classList[0] != "i6") {
+                    add_btn[i].classList.remove('active');
+                    i = i + 1;
+                    add_btn[i].classList.add('active');
+                }
+
+            }
+        }
+
     });
     // console.log("next");
 }
@@ -465,8 +496,59 @@ if (prevToken != undefined) {
     btn_prev.addEventListener('click', () => {
         remove_item();
         prv_json();
+
+        for (let i = 6; i >= 0; i--) {
+            if (add_btn[i].classList[3] == "active") {
+                if (add_btn[i].classList[0] != "i0") {
+                    add_btn[i].classList.remove('active');
+                    i = i - 1;
+                    add_btn[i].classList.add('active');
+                }
+            }
+        }
+
     });
 }
 else {
     Json_data();
 }
+
+
+// color change
+
+function chg_page(params) {
+
+}
+
+
+// DEScription section 
+
+let des_items = document.querySelectorAll(".des_items");
+
+des_items.forEach(des => {
+    des.addEventListener('click', () => {
+        des.classList.toggle("active");
+    })
+});
+
+
+
+
+$(document).ready(() => {
+    add_btn.forEach(add => {
+
+        add.addEventListener('click', () => {
+            for (let i = 0; i < add_btn.length; i++) {
+                $('.add').removeClass('active');
+            }
+            $(add).addClass('active');
+
+            console.log(add.className[1]);
+            ST_token = "pageToken=" + token[add.className[1]];
+            // console.log(ST_token);
+            remove_item();
+            Json_data();
+
+        })
+    });
+})

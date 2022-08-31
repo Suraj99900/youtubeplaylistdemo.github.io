@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You tube playlist</title>
 
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,7 +23,7 @@
                 <h2 id="channel_name"></h2>
                 <div class="main_box">
                     <div class="row">
-                        <div class="right_box">
+                        <div class="right_box padd-15">
                             <div class="video">
                                 <iframe id="main_if" width="560" height="315" src="" title="YouTube video player"
                                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
@@ -27,29 +32,54 @@
                             </div>
                             <h3 id="title"></h3>
                             <p id="date"></p>
-                           <div class="description_box">
-                                <span id="description"></span>
-                            </div>
-                            <div class="box_btn">
-                                <button id="btn_prev" class="btn">prevPage </button>
-                                <button id="btn_next" class="btn">nextPage </button>
+
+                            <div class="des_content ">
+                                <div class="des_items padd-15">
+                                    <div class="question">
+                                        <h3>Read Description</h3>
+                                        <i class="uil uil-angle-down"></i>
+                                    </div>
+                                    <div class="answer padd-15">
+                                        <p id="description">
+
+                                        </p>
+                                    </div>
+                                </div>
+
 
                             </div>
-                        </div>
-                        <div class="left_box">
-                            <div class="row" id="left">
+                            <div class="left_box">
+                                <div class="row padd-15" id="left">
+
+                                </div>
+                                <div class="box_btn">
+                                    <button id="btn_prev" class="btn ">prevPage </button>
+                                    <button id="i0" class="i0 btn add active">1 </button>
+                                    <button id="i1" class="i1 btn add">2 </button>
+                                    <button id="i2" class="i2 btn add">3</button>
+                                    <button id="i3" class="i3 btn add">4</button>
+                                    <button id="i4" class="i4 btn add">5</button>
+                                    <button id="i5" class="i5 btn add">6</button>
+                                    <button id="i6" class="i6 btn add">7</button>
+
+                                    <button id="btn_next" class="btn">nextPage </button>
+                                </div>
 
                             </div>
+
+
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="main.js"></script>
 </body>
 
 </html>
